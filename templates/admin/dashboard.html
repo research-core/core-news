@@ -1,0 +1,40 @@
+<link href="/static/main.css" media="all" rel="stylesheet" type="text/css">
+
+    {% if perms.letter %}
+
+	<div class="grp-row">
+		<div id="container_head">Human resources</div>
+		<div id="container"></div>
+
+
+			{% if perms.letter.change_person %}
+			<div class="iconfull_container">
+				<div class="thumbnail">
+					<a href="/admin/letter/message/">
+						<div class="thumbnail-icon" style="background-image: url(/static/icon_people_dark_blue.png)" image="/static/icon_people_dark_blue.png" hoverimage="/static/icon_people_light_blue.png"></div>				
+					</a>	
+				</div>
+
+				<span id="text">People</span>
+			</div>
+			{% endif %}
+		
+	</div>
+
+	{% endif %}
+
+	
+	<script type="text/javascript" charset="utf-8">
+		(function($) {
+			$(".thumbnail .thumbnail-icon").hover(function(){
+			    var imgurl = $(this).attr("hoverimage");
+			    $(this).css("background-image", "url(" + imgurl + ")")
+
+			}, function(){
+				var imgurl = $(this).attr("image");
+				$(this).css("background-image", "url(" + imgurl + ")");
+			});    
+		})(Suit.$);
+	</script>
+
+

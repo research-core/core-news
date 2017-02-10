@@ -1,0 +1,43 @@
+{% load thumbnail %}
+<html>
+    <body style="font: 12px/1.25 arial,helvetica,sans-serif;" >
+        
+        <table style="border: 1px solid #D3D7D9;background-color: #F9F9F9;padding:20px" align="center" width="650px" >
+            <tr>
+                <td style="margin-bottom:10px;" >
+                    <img src="{{SITE_URL}}/media/img/cnp.png" />
+                </td>
+            </tr>
+            {% for sub in subjects %}
+                <tr>
+                    <td colspan="2"><hr><h2 style="color: #0099FF;font-size:14px;margin: 5px auto;" >{{ sub.0.1 }}</h2><hr></td>
+                </tr>
+                {% for message in sub %}
+                <tr>
+                    <td >
+                        <div style="clear:both"></div>
+                        <h3 style="float:left;z-index:9;color: #707070;font-size:14px;margin:0;padding:0;" >{{ message.2 }}</h3>
+                        <div style="float:right;z-index:10;">
+                           {% if message.3 %}<small style="color: #333333;font-size:12px;" >{{ message.3 }}</small><br/>{% endif %}
+                           {% if message.4 %}<small style="color: #333333;font-size:12px;" >{{ message.4 }}</small><br/>{% endif %}
+                        </div>
+                        <div style="clear:both"></div>
+                        <table style="border-collapse: collapse;border:none;margin-top:5px;margin-bottom:25px;">
+                           <tr style="border-collapse: collapse;border:none;font-size:12px;" >
+                                {% thumbnail message.6 "80x80" crop="center" as im %}
+                                    <td valign="top" style="border-collapse: collapse;border:none;" >
+                                    <img style='padding-right: 10px; padding-bottom:10px' src="{{SITE_URL}}{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                                    </td>
+                                {% endthumbnail %}
+                                <td valign="top" style="border-collapse: collapse;border:none;font-size:12px;" >{{ message.5|safe }}</td>
+                           </tr>
+                        </table>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+        <br/>
+        <div style="text-align:center" >For comments, suggestions or to add messages to the CNP News send an email to <b>cnpnews@neuro.fchampalimaud.org</b></div>
+    </body>
+</html>
