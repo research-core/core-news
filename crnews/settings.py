@@ -31,7 +31,11 @@ ALLOWED_HOSTS = ['34.251.1.63', 'newsletter.research.fchampalimaud.org']
 # Application definition
 
 INSTALLED_APPS = [
-	'django.contrib.admin',
+	'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',
 	'django.contrib.sessions',
