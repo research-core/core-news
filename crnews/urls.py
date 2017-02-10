@@ -18,6 +18,7 @@ from django.contrib import admin
 from letter import urls
 
 urlpatterns = [
+	url(r'^accounts/', include('allauth.urls')),
     url(r'^', admin.site.urls),
     url(r'newsletter', include(urls) ),
 ]
