@@ -163,6 +163,6 @@ MEDIA_URL 	= 'media/'
 SITE_URL 	= 'http://176.34.253.84:8181/'
 
 try:
-	exec( open( "/etc/swpprjs/cnp_news.cfg" ).read() )
+	exec( open( "/etc/swpprjs/cr-news.cfg" ).read() )
 except:
 	pass
