@@ -38,7 +38,7 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'letter',
-	#'sorl.thumbnail',
+	'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +65,7 @@ TEMPLATES = [
 				'django.template.context_processors.media',
 				'django.contrib.auth.context_processors.auth',
 				'django.contrib.messages.context_processors.messages',
+				'django.core.context_processors.request',
 			],
 		},
 	},
@@ -106,6 +107,12 @@ AUTH_PASSWORD_VALIDATORS = [
 		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
 	},
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+	'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 
 # Internationalization
@@ -154,5 +161,7 @@ MEDIA_ROOT 	= os.path.join(BASE_DIR,'media')
 MEDIA_URL 	= 'media/'
 SITE_URL 	= 'http://176.34.253.84:8181/'
 
-
-exec( open( "/etc/swpprjs/cnp_news.cfg" ).read() )
+try:
+	exec( open( "/etc/swpprjs/cnp_news.cfg" ).read() )
+except:
+	pass
