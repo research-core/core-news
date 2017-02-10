@@ -25,7 +25,7 @@ SECRET_KEY = '(peu6%&)pwj_42=nbhs$2_3z#@ovro$rxneo(hijj51_+w9@0_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.251.1.63', 'newsletter.research.fchampalimaud.org']
 
 
 # Application definition
