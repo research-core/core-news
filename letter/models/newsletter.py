@@ -7,8 +7,8 @@ class Newsletter(models.Model):
 	newsletter_datetime = models.DateTimeField('Date', blank=True, null=True,)
 	newsletter_built 	= models.DateTimeField('Built date')
 	newsletter_sent 	= models.DateTimeField('Sent date', blank=True, null=True,)
-	newsletter_active 	= models.BooleanField('Active')
+	newsletter_active 	= models.NullBooleanField('Active')
 	newsletter_sendfrom = models.CharField('Send from',max_length=100, blank=True, null=True,)
-	newsletter_external = models.BooleanField('External newsletter')
+	newsletter_external = models.NullBooleanField('External newsletter')
 
 	def __unicode__(self): return str(self.newsletter_id)

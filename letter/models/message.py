@@ -2,7 +2,7 @@ from django.db import models
 
 class Message(models.Model):
 	message_id          = models.AutoField('Id', primary_key=True)
-	message_event       = models.BooleanField('Send an email to everyone, one day before the event', default=True)
+	message_event       = models.NullBooleanField('Send an email to everyone, one day before the event', default=True)
 	message_pubstart    = models.DateField('Start publish date', blank=True, null=True, help_text="If you let this field empty, the message will be sent from now to 'End publish date'." )
 	message_pubend      = models.DateField('End publish date', blank=True, null=True, help_text="If you let this field empty, the message will be sent only one time." )
 	message_order       = models.IntegerField('Order', blank=True, null=True, help_text="Order in the email." )
