@@ -1,7 +1,16 @@
 from django.db import models
 from django.db.models import Q
+from django.template import Context, Template
 from django.utils import timezone
 from news.models import Message
+
+class SubjectMessages(object):
+
+	def __init__(self, subject):
+		self.subject  = subject
+		self.messages = []
+
+
 
 class MailingList(models.Model):
 
@@ -38,3 +47,22 @@ class MailingList(models.Model):
 
 		msgs = msgs.order_by('subject__order', 'subject__name', 'date', 'name')
 		return msgs
+
+	def get_messages_by_subject(self, when=None):
+		when = timezone.now() if when is None else when
+		msgs = self.get_messages(when)
+
+		data = []
+		for msg in msgs:
+			if len(data)==0 or msg.subject != data[-1].subject:
+				data.append(SubjectMessages(msg.subject))
+			data[-1].messages.append(msg)
+		return data
+
+	def render_template(self, when=None):
+		when = timezone.now() if when is None else when
+		data = self.get_messages_by_subject()
+
+		t = Template(self.template.code)
+		c = Context({"data": data})
+		return t.render(c)

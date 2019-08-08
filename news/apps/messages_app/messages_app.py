@@ -2,6 +2,7 @@ from confapp import conf
 from pyforms_web.widgets.django import ModelAdminWidget
 
 from news.models import Message
+from .message_form import MessageForm
 
 class MessagesApp(ModelAdminWidget):
 
@@ -10,24 +11,13 @@ class MessagesApp(ModelAdminWidget):
     MODEL = Message
 
     SEARCH_FIELDS = ['name__icontains']
-
+    LIST_COLS_SIZES = ['30px', '30px', 'auto', 'auto', '50px', '50px']
+    LIST_COLS_ALIGN = ['center', 'center', 'left', 'left', 'center', 'center']
     LIST_FILTER = ['subject', 'is_event', 'publish_start', 'publish_end']
+    LIST_HEADERS = ['Event', 'Order','Subject', 'Name', 'Publish start', 'Publish end']
+    LIST_DISPLAY = ['is_event', 'order', 'subject', 'name', 'publish_start', 'publish_end']
 
-    LIST_HEADERS = ['Subject', 'Order', 'Name', 'Is an event', 'Publish start', 'Publish end']
-    LIST_DISPLAY = ['subject', 'order', 'name', 'is_event', 'publish_start', 'publish_end']
-
-    FIELDSETS = [
-        ('is_event', 'publish_start', 'publish_end', 'order'),
-        'subject',
-        ('name', 'date'),
-        'image',
-        'text',
-        'location',
-        'start',
-        'end',
-        'mailing_lists',
-    ]
-
+    EDITFORM_CLASS = MessageForm
 
     ########################################################
     #### ORQUESTRA CONFIGURATION ###########################
