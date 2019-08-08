@@ -20,5 +20,5 @@ class TemplatesApp(ModelAdminWidget):
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'left>MessagesApp'
     ORQUESTRA_MENU_ORDER = 0
-    ORQUESTRA_MENU_ICON  = 'flag checkered'
+    ORQUESTRA_MENU_ICON  = 'pen square'
     ########################################################

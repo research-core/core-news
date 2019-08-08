@@ -7,5 +7,7 @@ class Communication(models.Model):
 	sent_on = models.DateTimeField('Date', blank=True, null=True,)
 	sent_to = models.ForeignKey('MailingList', on_delete=models.CASCADE)
 
+	messages = models.ManyToManyField('Message')
+
 	def __str__(self):
 		return self.name

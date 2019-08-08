@@ -42,6 +42,7 @@ class Command(BaseCommand):
                 name=email_subject,
                 html=email_body,
                 sent_on=timezone.now(),
-                sent_to=lst
+                sent_to=lst,
+                messages=msgs
             )
             com.save()
