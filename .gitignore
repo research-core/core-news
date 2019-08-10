@@ -1,3 +1,7 @@
 *.pyc
 
 core_news\.egg-info/
+
+build/
+
+dist/
